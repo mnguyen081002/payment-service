@@ -2,7 +2,6 @@ package repository
 
 import (
 	"paymentservice/config"
-	"paymentservice/internal/domain"
 	"paymentservice/internal/infrastructure"
 	"paymentservice/internal/repository/gormlib"
 	"paymentservice/internal/repository/mongo"
@@ -11,23 +10,10 @@ import (
 )
 
 type UnitOfWork struct {
-	ProductAttributesRepository domain.ProductAttributesRepository
-	TierVariationRepository     domain.TierVariationRepository
-	ProductModelRepository      domain.ProductModelRepository
-	ProductRepository           domain.ProductRepository
-	CategoryRepository          domain.CategoryRepository
-	RatingRepository            domain.RatingRepository
 }
 
 func NewUnitOfWorkGorm() *UnitOfWork {
-	return &UnitOfWork{
-		ProductRepository:           gormlib.NewProductRepository(),
-		ProductAttributesRepository: gormlib.NewProductAttributesRepository(),
-		TierVariationRepository:     gormlib.NewTierVariationRepository(),
-		ProductModelRepository:      gormlib.NewProductModelRepository(),
-		CategoryRepository:          gormlib.NewCategoryRepository(),
-		RatingRepository:            gormlib.NewRatingRepository(),
-	}
+	return &UnitOfWork{}
 }
 
 func NewUnitOfWorkMongo() *UnitOfWork {

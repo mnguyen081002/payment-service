@@ -5,15 +5,8 @@ import (
 )
 
 var Module = fx.Options(
-	fx.Provide(NewCmsRoutes),
+	fx.Provide(),
 	fx.Invoke(
 		NewHealthRoutes,
-		NewCmsProductRoutes,
-		NewCmsCategoryRoutes,
-		NewRatingRoutes,
-		NewProductRoutes,
-		NewCmsProductAttributesRoutes,
-		NewTierVariationRoutes,
-		NewProductModelsRoutes,
 	),
 )

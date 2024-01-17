@@ -7,7 +7,6 @@ import (
 	"log"
 	"os"
 	config "paymentservice/config"
-	"paymentservice/internal/models"
 	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -116,14 +115,7 @@ func getDatabaseInstance(config *config.Config) (rdbms *gorm.DB, nosql *mongo.Da
 }
 
 func (d Database) RegisterTables() {
-	err := d.RDBMS.AutoMigrate(
-		models.Product{},
-		models.ProductAttributes{},
-		models.ProductModel{},
-		models.TierVariations{},
-		models.Category{},
-		models.Rating{},
-	)
+	err := d.RDBMS.AutoMigrate()
 
 	if err != nil {
 		d.logger.Fatal("Database migration error", zap.Error(err))

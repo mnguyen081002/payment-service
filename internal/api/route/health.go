@@ -1,6 +1,7 @@
 package route
 
 import (
+	controller "paymentservice/internal/api/controllers"
 	"paymentservice/internal/lib"
 )
 
